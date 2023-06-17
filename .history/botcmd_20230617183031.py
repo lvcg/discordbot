@@ -10,17 +10,12 @@ load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
 
-# Disable typing and presence events
-intents = discord.Intents.default()
-intents.typing = False
-intents.presences = False
-
 # Initialize tokenizer and model
 tokenizer = AlbertTokenizer.from_pretrained('albert-base-v2')
 model = AlbertModel.from_pretrained("albert-base-v2")
 
-# Create bot instance with intents
-bot = commands.Bot(command_prefix='!', intents=intents)
+# Create bot instance
+bot = commands.Bot(command_prefix='!')
 
 # Define commands
 @bot.command()
@@ -87,7 +82,6 @@ async def on_guild_remove(guild):
 if __name__ == '__main__':
     # Run the bot
     bot.run(TOKEN)
-
 
 
 
